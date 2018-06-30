@@ -1483,8 +1483,9 @@ void Model::LoadControllerModule(const char *lib)
 
   lt_dlsetsearchpath(FileManager::stagePath().c_str());
 
-  // printf( "STAGEPATH: %s\n",  FileManager::stagePath().c_str());
-  //  printf( "ltdl search path: %s\n", lt_dlgetsearchpath() );
+  printf( "STAGEPATH: %s\n",  FileManager::stagePath().c_str());
+  printf( "ltdl search path: %s\n", lt_dlgetsearchpath() );
+  // lt_dladdsearchdir(FileManager::stagePath().c_str());
 
   // PLUGIN_PATH now defined in config.h
   lt_dladdsearchdir(PLUGIN_PATH);
@@ -1525,7 +1526,7 @@ void Model::LoadControllerModule(const char *lib)
                "current directory if STAGEPATH is not set.]\n",
                libname);
 
-    printf("ctrl \"%s\" STAGEPATH \"%s\"\n", libname, PLUGIN_PATH);
+    printf("ctrl \"%s\" lt_dlgetsearchpath() \"%s\"\n", libname, lt_dlgetsearchpath());
 
     puts("libtool error #2");
     fflush(stdout);
